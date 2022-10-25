@@ -8,7 +8,7 @@ const Home = () => {
     <div>
       <Container>
         <Row>
-          <Col lg="3" className="d-none d-lg-block">
+          <Col lg="3" className="">
             <LeftSideNav></LeftSideNav>
           </Col>
           <Col lg="9">

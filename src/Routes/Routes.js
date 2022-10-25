@@ -24,16 +24,21 @@ export const routes = createBrowserRouter([
             //This will show all the packages in the home directory by default
             path: "/",
             element: <AllPackages></AllPackages>,
+            loader: () => fetch("http://localhost:5000/packs"),
           },
           {
             //This will show the selected catagory packages and the select click will be from the leftSideNav where the category links are
             path: "/packages/:id",
             element: <PackagesContainer></PackagesContainer>,
+            loader: ({ params }) =>
+              fetch(`http://localhost:5000/category/${params.id}`),
           },
           {
             //this will show the details of the selected package
             path: "/packagedetails/:id",
             element: <PackageDetails></PackageDetails>,
+            loader: ({ params }) =>
+              fetch(`http://localhost:5000/packs/${params.id}`),
           },
           {
             //this is will show selected package with check out option

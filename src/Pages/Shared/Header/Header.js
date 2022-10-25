@@ -15,7 +15,13 @@ const Header = () => {
 
   const handleLogOut = () => {};
   return (
-    <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      bg="light"
+      variant="light"
+      className="mb-4"
+    >
       <Container>
         <Navbar.Brand>
           <img
