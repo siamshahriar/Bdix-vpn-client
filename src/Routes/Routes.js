@@ -44,6 +44,8 @@ export const routes = createBrowserRouter([
             //this is will show selected package with check out option
             path: "/checkout/:id",
             element: <Checkout></Checkout>,
+            loader: ({ params }) =>
+              fetch(`http://localhost:5000/packs/${params.id}`),
           },
         ],
       },
