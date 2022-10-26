@@ -4,13 +4,13 @@
 
 .particle-error,
 .permission_denied,
-#tsparticles {
+.tsparticles {
   width: 100%;
   height: 100%;
   margin: 0px !important;
 }
 
-#tsparticles {
+.tsparticles {
   position: fixed !important;
   opacity: 0.23;
 }
