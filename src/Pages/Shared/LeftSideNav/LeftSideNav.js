@@ -13,11 +13,10 @@ const LeftSideNav = () => {
   }, []);
   return (
     <div>
-      {/* <h2>All Categories {categories.length}</h2> */}
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center ">
         <button className="selectPack">Select Package</button>
       </div>
-      <div className="text-center">
+      <div className="text-center mb-4">
         {categories.map((category) => (
           <div
             className="eachCatagoryName"
