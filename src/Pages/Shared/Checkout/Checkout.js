@@ -2,16 +2,15 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { Button, Card, Table } from "react-bootstrap";
 import "./Checkout.css";
 
 const Checkout = () => {
   const pack = useLoaderData();
 
-  const { _id, name, speed, description, price, realip, connection, img } =
-    pack;
-  const { youtube, facebook, bdix, rawInternet } = speed;
+  const { name, speed, price, realip, img } = pack;
+  const { rawInternet } = speed;
   const total = price * (5 / 100) + price + 100;
 
   return (
