@@ -41,6 +41,7 @@
   padding: 10px;
   height: 50px;
   width: 50px;
+  cursor: pointer;
 }
 .iputField {
   border: none;
@@ -57,54 +58,45 @@
   transition: 0.3s;
 }
 
-/* submit button  */
-
-.btnSubmit {
-  align-items: center;
-  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-  border: 0;
-  border-radius: 8px;
-  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-  box-sizing: border-box;
-  color: #ffffff;
-  display: flex;
-  font-family: Phantomsans, sans-serif;
-  font-size: 18px;
-  justify-content: center;
-  line-height: 1em;
-  max-width: 100%;
-  min-width: 20px;
-  width: 120px;
-  margin: 0 auto;
-  padding: 3px;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.btnSubmit:active,
-.btnSubmit:hover {
-  outline: 0;
-  color: white;
-}
-
-.btnSubmit span {
-  background-color: rgb(5, 6, 45);
-  padding: 16px 24px;
-  border-radius: 6px;
-  width: 100%;
-  height: 100%;
-  transition: 300ms;
-}
-
-.btnSubmit:hover span {
+/* another button  */
+.btn2 {
+  padding: 0.7em 1.4em;
   background: none;
+  border: 2px solid #fff;
+  font-size: 15px;
+  color: #131313;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  border-radius: 12px;
+  background-color: #ecd448;
+  font-weight: bolder;
+  box-shadow: 0 2px 0 2px #000;
 }
 
-.btnSubmit:active {
+.btn2:before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 120%;
+  background-color: #ff6700;
+  top: 50%;
+  transform: skewX(30deg) translate(-150%, -50%);
+  transition: all 0.5s;
+}
+
+.btn2:hover {
+  background-color: #4cc9f0;
+  color: #fff;
+  box-shadow: 0 2px 0 2px #0d3b66;
+}
+
+.btn2:hover::before {
+  transform: skewX(30deg) translate(150%, -50%);
+  transition-delay: 0.1s;
+}
+
+.btn2:active {
   transform: scale(0.9);
 }

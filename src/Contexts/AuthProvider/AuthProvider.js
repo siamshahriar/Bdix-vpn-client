@@ -21,9 +21,8 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log("user inside state change", currentUser);
-      if (currentUser === null || currentUser.emailVerified) {
-        setUser(currentUser);
-      }
+
+      setUser(currentUser);
       setLoading(false);
     });
 
@@ -32,9 +31,30 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+  //Normal_registration
+  const createUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  //Normal Login
+  const signIn = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  //logout all
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
+
   const authInfo = {
     user,
     loading,
+    createUser,
+    signIn,
+    logOut,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

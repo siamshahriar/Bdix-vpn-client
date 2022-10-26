@@ -1,14 +1,46 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import toast from "react-hot-toast";
 import "./Registration.css";
+import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photoURL = form.photoURL.value;
+    const password = form.password.value;
+    console.log(name, email, photoURL, password);
+
+    createUser(email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        setError("");
+        toast.success("Registration Successful");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        console.log(errorCode);
+        setError(errorCode.substring(5));
+        const errorMessage = error.message;
+        toast.error(errorCode.substring(5));
+        // ..
+      });
+  };
   return (
     <div className="container fullCon">
       <div className="regContainer">
-        <Form className="mx-auto regForm">
+        <Form onSubmit={handleSubmit} className="mx-auto regForm">
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <p className="loginHeading">Registration</p>
             <Form.Label className="emailName">Full Name</Form.Label>
@@ -53,9 +85,12 @@ const Register = () => {
               label="Accept Terms & Conditions"
             />
           </Form.Group>
-          <Link className="btnSubmit" variant="primary" type="submit">
-            <span class="text">Register</span>
-          </Link>
+          <Form.Group className="mb-3 d-flex justify-content-center">
+            <button className="btn2" variant="primary" type="submit">
+              Register
+            </button>
+          </Form.Group>
+
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <p className="emailName regWith text-center mt-3">
               or Register with

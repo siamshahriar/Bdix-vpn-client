@@ -7,13 +7,25 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import { FaUser } from "react-icons/fa";
 import "./Header.css";
+import toast from "react-hot-toast";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { Switch } from "antd";
 
 const Header = () => {
-  const { user, loading } = useContext(AuthContext);
-
-  const handleLogOut = () => {};
+  const { user, loading, logOut } = useContext(AuthContext);
+  console.log(user);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        // Sign-out successful.
+        console.log("sign out successful");
+        toast.success("sign out Successful");
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log(error);
+      });
+  };
   return (
     <Navbar
       collapseOnSelect
