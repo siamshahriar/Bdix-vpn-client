@@ -13,6 +13,7 @@ const Register = () => {
             <p className="loginHeading">Registration</p>
             <Form.Label className="emailName">Full Name</Form.Label>
             <Form.Control
+              className="iputField"
               type="text"
               name="name"
               placeholder="Enter full name"
@@ -21,6 +22,7 @@ const Register = () => {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label className="emailName">Photo URL</Form.Label>
             <Form.Control
+              className="iputField"
               type="text"
               name="photoURL"
               placeholder="Enter photo URL"
@@ -28,11 +30,17 @@ const Register = () => {
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label className="emailName">Email address</Form.Label>
-            <Form.Control type="email" name="email" placeholder="Enter email" />
+            <Form.Control
+              className="iputField"
+              type="email"
+              name="email"
+              placeholder="Enter email"
+            />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label className="emailName">Password</Form.Label>
             <Form.Control
+              className="iputField"
               type="password"
               name="password"
               placeholder="Password"
@@ -56,6 +64,12 @@ const Register = () => {
               <FaGoogle className=" loginIcon"></FaGoogle>
               <FaGithub className=" loginIcon"></FaGithub>
             </div>
+            <p className="emailName regWith text-center mt-3">
+              Already have an account? Login
+              <Link className="ms-1" to="/login">
+                Here
+              </Link>{" "}
+            </p>
           </Form.Group>
         </Form>
       </div>

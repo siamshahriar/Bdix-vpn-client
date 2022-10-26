@@ -1,10 +1,10 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
+import "./Error404.css";
 const Error404 = () => {
   return (
-    <div>
-      <h2>Error 404!</h2>
-      <h2>This URL doesn't exist!!</h2>
+    <div className="permission_denied">
+      
     </div>
   );
 };

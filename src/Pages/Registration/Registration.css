@@ -35,7 +35,26 @@
   gap: 15px;
 }
 .loginIcon {
-  font-size: 2rem;
+  /* font-size: 2rem; */
+  background-color: #fbd7f2;
+  border-radius: 50%;
+  padding: 10px;
+  height: 50px;
+  width: 50px;
+}
+.iputField {
+  border: none;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: #e8e8e8;
+  box-shadow: 20px 20px 60px #ad12a0, -10px -10px 60px #ffffff;
+  transition: 0.3s;
+}
+.iputField:focus {
+  outline-color: #e8e8e8;
+  background: #e8e8e8;
+  box-shadow: inset 20px 20px 60px #c5c5c5, inset -20px -20px 60px #ffffff;
+  transition: 0.3s;
 }
 
 /* submit button  */
