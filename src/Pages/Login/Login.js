@@ -28,6 +28,7 @@ const Login = () => {
         console.log(user);
         setError("");
         toast.success("Github Login Successful");
+        navigate(from, { replace: true });
         // ...
       })
       .catch((error) => {
@@ -52,6 +53,7 @@ const Login = () => {
         console.log(user);
         setError("");
         toast.success("Google Log in Successful");
+        navigate(from, { replace: true });
         // ...
       })
       .catch((error) => {

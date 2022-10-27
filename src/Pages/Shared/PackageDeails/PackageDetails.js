@@ -18,7 +18,7 @@ const PackageDetails = () => {
   return (
     <div className=" mx-auto">
       <div className="d-flex justify-content-center mb-3">
-        <Pdf targetRef={ref} filename="code-example.pdf">
+        <Pdf targetRef={ref} filename={`${name}.pdf`}>
           {({ toPdf }) => (
             <>
               <h2 className="text-center ctname">

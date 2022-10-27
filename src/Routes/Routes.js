@@ -10,6 +10,7 @@ import PackagesContainer from "../Pages/Shared/PackagesContainer/PackagesContain
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Registration/Register";
 import Error404 from "../Pages/Error404/Error404";
+import PrivateRoute from "./PrivateRoute";
 
 export const routes = createBrowserRouter([
   {
@@ -43,7 +44,11 @@ export const routes = createBrowserRouter([
           {
             //this is will show selected package with check out option
             path: "/checkout/:id",
-            element: <Checkout></Checkout>,
+            element: (
+              <PrivateRoute>
+                <Checkout></Checkout>
+              </PrivateRoute>
+            ),
             loader: ({ params }) =>
               fetch(`http://localhost:5000/packs/${params.id}`),
           },
