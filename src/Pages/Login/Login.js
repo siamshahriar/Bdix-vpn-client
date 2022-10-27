@@ -4,15 +4,48 @@ import Form from "react-bootstrap/Form";
 import toast from "react-hot-toast";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
-  const { signIn, setLoading } = useContext(AuthContext);
+  const { signIn, setLoading, providerLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
 
+  const googleProvider = new GoogleAuthProvider();
+
   const from = location.state?.from?.pathname || "/";
 
+  //Google login
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        console.log(user);
+        setError("");
+        toast.success("Google Log in Successful");
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        console.log(errorCode);
+        toast.error(errorCode.substring(5));
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  };
+
+  //normal login
   const handleLogIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -82,7 +115,10 @@ const Login = () => {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <p className="emailName regWith text-center mt-3">or Login with</p>
             <div className="iconsgg">
-              <FaGoogle className=" loginIcon"></FaGoogle>
+              <FaGoogle
+                onClick={handleGoogleSignIn}
+                className=" loginIcon"
+              ></FaGoogle>
               <FaGithub className=" loginIcon"></FaGithub>
             </div>
             <p className="emailName regWith text-center mt-3">
