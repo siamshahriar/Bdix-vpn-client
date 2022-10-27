@@ -13,15 +13,15 @@ const EachPack = ({ pack }) => {
   return (
     <Card className="custom_card" style={{ width: "18rem" }}>
       <Card.Img variant="top" style={{ height: "200px" }} src={img} />
-      <Card.Body>
-        <Card.Title className="mt-3">{name}</Card.Title>
+      <Card.Body className="cardBODDy">
+        <Card.Title className="mt-3 crdName">{name}</Card.Title>
         <Table responsive>
           <thead>
             <tr>
               <td></td>
             </tr>
             <tr>
-              <th>RAW - {rawInternet}mbps</th>
+              <th clas>RAW - {rawInternet}mbps</th>
             </tr>
             <tr>
               <td>Youtube - {youtube}mbps</td>

@@ -2,6 +2,20 @@
   color: white;
   text-decoration: none;
 }
+.cardBODDy {
+  background: linear-gradient(135deg, #ffe9ec 0%, #aceae1 100%);
+}
+
+.crdName {
+  color: rgb(1, 81, 81);
+}
+
+.cardBODDy th,
+.cardBODDy td {
+  font-size: 15px;
+  color: rgb(1, 81, 81);
+  border-bottom: 0.1px solid rgba(0, 255, 247, 0.466);
+}
 
 .custom_card {
   width: 190px;

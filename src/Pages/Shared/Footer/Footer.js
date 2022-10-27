@@ -4,7 +4,6 @@ import "./Footer.css";
 import {
   FaTelegram,
   FaTwitterSquare,
-  FaTelegramPlane,
   FaGithub,
   FaFacebook,
 } from "react-icons/fa";

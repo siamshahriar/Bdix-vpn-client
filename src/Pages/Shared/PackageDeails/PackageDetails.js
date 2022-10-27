@@ -39,7 +39,7 @@ const PackageDetails = () => {
           style={{ width: "28rem" }}
         >
           <Card.Img variant="top" style={{ height: "250px" }} src={img} />
-          <Card.Body>
+          <Card.Body className="cardBODDy">
             <Card.Title className="mt-3">{name}</Card.Title>
             <Table responsive>
               <thead>
