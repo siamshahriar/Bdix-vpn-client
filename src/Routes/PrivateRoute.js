@@ -8,7 +8,11 @@ const PrivateRoute = ({ children }) => {
   const location = useLocation();
 
   if (loading) {
-    return <Spinner animation="grow" variant="secondary" />;
+    return (
+      <div className="h-100 d-flex justify-content-center">
+        <Spinner animation="grow" variant="secondary" />;
+      </div>
+    );
   }
 
   if (!user) {
