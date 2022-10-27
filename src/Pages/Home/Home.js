@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
       <Container>
-        <Row>
+        <Row className="">
           <Col lg="3" className="">
             <LeftSideNav></LeftSideNav>
           </Col>

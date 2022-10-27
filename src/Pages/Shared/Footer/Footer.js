@@ -1,20 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Footer.css";
+import {
+  FaTelegram,
+  FaTwitterSquare,
+  FaTelegramPlane,
+  FaGithub,
+  FaFacebook,
+} from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer>
-      <div class="footer-area">
-        <Link className="myName">© Md. Shahriar Rahman ©</Link>
-        <div class="social-icons">
-          <Link>github</Link>
-          <Link>facebook</Link>
-          <Link>telegram</Link>
-          <Link>twitter</Link>
+    <div className="footerContainer">
+      <footer>
+        <div class="footer-area">
+          <Link className="myName">© Md. Shahriar Rahman ©</Link>
+          <div class="social-icons">
+            <a href="https://t.me/siaamdiu">
+              <FaTelegram></FaTelegram>
+            </a>
+            <a href="https://github.com/siamshahriar">
+              <FaGithub></FaGithub>
+            </a>
+            <a href="https://www.facebook.com/mdshahriarrahman.siam/">
+              <FaFacebook></FaFacebook>
+            </a>
+            <a href="twitter.com">
+              <FaTwitterSquare></FaTwitterSquare>
+            </a>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   );
 };
 

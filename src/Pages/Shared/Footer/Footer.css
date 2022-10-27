@@ -1,7 +1,13 @@
+.footerContainer {
+  position: relative;
+  bottom: -20.8vh;
+  left: 0;
+  right: 0;
+}
 footer {
   color: #fff;
-  background: #2e2e2e;
-  padding: 1.8rem;
+  background: #77399b;
+  padding: 1rem;
 }
 .footer-area {
   text-align: center;
@@ -10,8 +16,11 @@ footer {
 .myName {
   text-decoration: none;
   color: #ffffff;
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   font-weight: 700;
+}
+.myName:hover {
+  color: #e6bbff;
 }
 .social-icons a {
   text-decoration: none;
@@ -19,4 +28,8 @@ footer {
   padding: 5px 5px;
   font-size: 2.5rem;
   transition: all 0.25s ease-in-out;
+}
+.social-icons a:hover {
+  color: #e6bbff;
+  font-size: 2.8rem;
 }

@@ -16,7 +16,7 @@ const PackageDetails = () => {
   const { rawInternet } = speed;
 
   return (
-    <div className=" mx-auto">
+    <div className=" mx-auto mb-5">
       <div className="d-flex justify-content-center mb-3">
         <Pdf targetRef={ref} filename={`${name}.pdf`}>
           {({ toPdf }) => (
