@@ -6,13 +6,35 @@ import toast from "react-hot-toast";
 import "./Registration.css";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider } from "firebase/auth";
 
 const Register = () => {
   const { createUser, providerLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
 
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
 
+  //Github register
+
+  const handleGithubSignIn = () => {
+    providerLogin(githubProvider)
+      .then((result) => {
+        // The signed-in user info.
+        const user = result.user;
+        console.log(user);
+        setError("");
+        toast.success("Github Registration Successful");
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        console.log(errorCode);
+        toast.error(errorCode.substring(5));
+        // ...
+      });
+  };
   //Google register
 
   const handleGoogleSignIn = () => {
@@ -33,12 +55,6 @@ const Register = () => {
         const errorCode = error.code;
         console.log(errorCode);
         toast.error(errorCode.substring(5));
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
       });
   };
 
@@ -133,7 +149,10 @@ const Register = () => {
                 onClick={handleGoogleSignIn}
                 className=" loginIcon"
               ></FaGoogle>
-              <FaGithub className=" loginIcon"></FaGithub>
+              <FaGithub
+                onClick={handleGithubSignIn}
+                className=" loginIcon"
+              ></FaGithub>
             </div>
             <p className="emailName regWith text-center mt-3">
               Already have an account? Login

@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const { signIn, setLoading, providerLogin } = useContext(AuthContext);
@@ -13,8 +14,30 @@ const Login = () => {
   const location = useLocation();
 
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
 
   const from = location.state?.from?.pathname || "/";
+
+  //Github register
+
+  const handleGithubSignIn = () => {
+    providerLogin(githubProvider)
+      .then((result) => {
+        // The signed-in user info.
+        const user = result.user;
+        console.log(user);
+        setError("");
+        toast.success("Github Login Successful");
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        console.log(errorCode);
+        toast.error(errorCode.substring(5));
+        // ...
+      });
+  };
 
   //Google login
 
@@ -119,7 +142,10 @@ const Login = () => {
                 onClick={handleGoogleSignIn}
                 className=" loginIcon"
               ></FaGoogle>
-              <FaGithub className=" loginIcon"></FaGithub>
+              <FaGithub
+                onClick={handleGithubSignIn}
+                className=" loginIcon"
+              ></FaGithub>
             </div>
             <p className="emailName regWith text-center mt-3">
               Don't have an account yet? Register
