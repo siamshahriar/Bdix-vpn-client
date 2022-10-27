@@ -18,6 +18,10 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState("null");
   const [loading, setLoading] = useState(true);
 
+  const providerLogin = (provider) => {
+    setLoading(true);
+    return signInWithPopup(auth, provider);
+  };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log("user inside state change", currentUser);
@@ -55,6 +59,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     signIn,
     logOut,
+    providerLogin,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

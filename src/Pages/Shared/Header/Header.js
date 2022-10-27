@@ -10,10 +10,23 @@ import "./Header.css";
 import toast from "react-hot-toast";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { Switch } from "antd";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 const Header = () => {
   const { user, loading, logOut } = useContext(AuthContext);
   console.log(user);
+
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      {user?.displayName ? (
+        <span>{user?.displayName}</span>
+      ) : (
+        <span>No Name</span>
+      )}
+    </Tooltip>
+  );
+
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -66,10 +79,9 @@ const Header = () => {
             <Nav.Link>
               {user?.uid ? (
                 <>
-                  <span>{user?.displayName}</span>
-                  <Button variant="light" onClick={handleLogOut}>
+                  <Link variant="light" onClick={handleLogOut}>
                     Log out
-                  </Button>
+                  </Link>
                 </>
               ) : (
                 <>
@@ -81,17 +93,25 @@ const Header = () => {
               )}
             </Nav.Link>
             <Nav.Link>
-              <Link className="" to="/profile">
-                {user?.photoURL ? (
-                  <Image
-                    style={{ height: "30px" }}
-                    roundedCircle
-                    src={user?.photoURL}
-                  ></Image>
-                ) : (
-                  <FaUser></FaUser>
-                )}
-              </Link>
+              <>
+                <OverlayTrigger
+                  placement="bottom"
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={renderTooltip}
+                >
+                  <Link className="" to="/profile">
+                    {user?.photoURL ? (
+                      <Image
+                        style={{ height: "30px" }}
+                        roundedCircle
+                        src={user?.photoURL}
+                      ></Image>
+                    ) : (
+                      <FaUser></FaUser>
+                    )}
+                  </Link>
+                </OverlayTrigger>
+              </>
             </Nav.Link>
             <Nav.Link>
               <Switch

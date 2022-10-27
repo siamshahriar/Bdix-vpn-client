@@ -5,11 +5,44 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import toast from "react-hot-toast";
 import "./Registration.css";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, providerLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
 
+  const googleProvider = new GoogleAuthProvider();
+
+  //Google register
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        console.log(user);
+        setError("");
+        toast.success("Google Registration Successful");
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        console.log(errorCode);
+        toast.error(errorCode.substring(5));
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  };
+
+  //normal register
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -96,7 +129,10 @@ const Register = () => {
               or Register with
             </p>
             <div className="iconsgg">
-              <FaGoogle className=" loginIcon"></FaGoogle>
+              <FaGoogle
+                onClick={handleGoogleSignIn}
+                className=" loginIcon"
+              ></FaGoogle>
               <FaGithub className=" loginIcon"></FaGithub>
             </div>
             <p className="emailName regWith text-center mt-3">
