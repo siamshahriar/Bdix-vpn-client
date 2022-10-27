@@ -43,9 +43,9 @@ const Header = () => {
     <Navbar
       collapseOnSelect
       expand="lg"
-      bg="light"
+      bg=""
       variant="light"
-      className="mb-4"
+      className="mb-4 customNav"
     >
       <Container>
         <Navbar.Brand>

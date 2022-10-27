@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap");
+
+.whatIsVPN {
+  font-family: "Hind Siliguri", sans-serif;
+  width: 100%;
+  background: linear-gradient(135deg, #ead9f8 0%, #c6fff7 100%);
+  border-radius: 7px;
+  box-shadow: 20px 20px 60px #bebebe;
+  padding: 1.3rem;
+}
+.bangQue {
+  font-size: 20px;
+  font-weight: 600;
+}
+.bangAns {
+  font-size: 15px;
+}
