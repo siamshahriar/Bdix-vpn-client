@@ -9,7 +9,8 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { GithubAuthProvider } from "firebase/auth";
 
 const Register = () => {
-  const { createUser, providerLogin } = useContext(AuthContext);
+  const { createUser, providerLogin, updateUserProfile } =
+    useContext(AuthContext);
   const [error, setError] = useState("");
 
   const googleProvider = new GoogleAuthProvider();
@@ -58,6 +59,17 @@ const Register = () => {
       });
   };
 
+  //update profile for photo and name
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
+
   //normal register
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -74,6 +86,7 @@ const Register = () => {
         const user = userCredential.user;
         console.log(user);
         setError("");
+        handleUpdateUserProfile(name, photoURL);
         toast.success("Registration Successful");
         // ...
       })
